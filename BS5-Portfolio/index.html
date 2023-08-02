@@ -55,7 +55,7 @@
       class="vh-100 d-flex flex-column justify-content-center align-items-center"
       style="background-image: url('image/hero-bg.jpg')"
     >
-      <h1 class="fw-bolder display-1 mb-3">Lucie Anderson</h1>
+      <h1 class="fw-bolder display-1 mb-3" id="hometext">Lucie Anderson</h1>
       <h6 class="fs-3 text-secondary text-capitalize mb-4">
         I'm a professional front-end web developer
       </h6>
@@ -277,5 +277,22 @@
       </div>
     </footer>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+      const textEl = document.querySelector("#hometext");
+      const text = "Lucie Anderson";
+
+      let idx = 1; //문자열 인덱스번호 1 초기값
+      let speed = 100; //문자열 출력속도
+
+      writeText(); //초기 실행하면 계속실행됨
+      function writeText() {
+        textEl.textContent = text.slice(0, idx); // 첫번째 문자부터 idx까지 잘라내기
+        idx++;
+        if (idx > text.length) {
+          idx = 1;
+        }
+        setTimeout(writeText, speed); //speed초 후에 writeText함수 실행함(계속 반복됨)
+      }
+    </script>
   </body>
 </html>
